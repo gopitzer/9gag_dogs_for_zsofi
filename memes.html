@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9GAG Videos</title>
+    <style>
+        /* Add some basic styling */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .item {
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Create a container to hold the items -->
+        <div id="itemContainer"></div>
+    </div>
+
+    <script>
+        // Function to load video from 9gag link
+        function loadVideo(linkId, title) {
+            // Construct the video URL based on the linkId
+            const videoUrl = `https://img-9gag-fun.9cache.com/photo/${linkId}_460svav1.mp4`;
+
+            // Create a div for the item
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'item';
+
+            // Create an h2 element for the title
+            const titleElement = document.createElement('h2');
+            titleElement.textContent = title;
+
+            // Create a video element and set its attributes
+            const videoElement = document.createElement('video');
+            videoElement.setAttribute('controls', 'controls');
+            videoElement.setAttribute('width', '100%');
+            videoElement.setAttribute('src', videoUrl);
+
+            // Append the title and video elements to the item div
+            itemDiv.appendChild(titleElement);
+            itemDiv.appendChild(videoElement);
+
+            // Append the item div to the container
+            const container = document.getElementById('itemContainer');
+            container.appendChild(itemDiv);
+        }
+
+        // Load the list from the text file
+        fetch('kutya memes.txt')
+            .then(response => response.text())
+            .then(data => {
+                // Split the data into lines
+                const lines = data.split('\n');
+                lines.forEach(line => {
+                    // Split each line into link and title
+                    const [link, title] = line.split(' - ');
+                    if (link && title) {
+                        // Extract the linkId from the 9gag link
+                        const linkId = link.split('/').pop();
+                        loadVideo(linkId, title);
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error loading the text file:', error);
+            });
+    </script>
+</body>
+</html>
