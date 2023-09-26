@@ -36,7 +36,7 @@
 
     <script>
         // Function to load video from 9gag link
-        function loadVideo(linkId, title) {
+        function loadVideo(linkId, title, link) {
             // Construct the video URL based on the linkId
             const videoUrl = `https://img-9gag-fun.9cache.com/photo/${linkId}_460svav1.mp4`;
 
@@ -46,7 +46,7 @@
 
             // Create an h2 element for the title
             const titleElement = document.createElement('h2');
-            titleElement.textContent = title;
+            titleElement.textContent = '<a href="'+link+'">'+title+'</a>';
 
             // Create a video element and set its attributes
             const videoElement = document.createElement('video');
@@ -75,7 +75,7 @@
                     if (link && title) {
                         // Extract the linkId from the 9gag link
                         const linkId = link.split('/').pop();
-                        loadVideo(linkId, title);
+                        loadVideo(linkId, title, link);
                     }
                 });
             })
