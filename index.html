@@ -45,8 +45,16 @@
             itemDiv.className = 'item';
 
             // Create an h2 element for the title
-            const titleElement = document.createElement('h2');
-            titleElement.textContent = '<a href="'+link+'">'+title+'</a>';
+           
+
+            const titleElement = document.createElement('a');
+            titleElement.textContent = title;
+            titleElement.href = linkUrl;
+            titleElement.target = '_blank'; // Open the link in a new tab
+
+            const titleElementwithh2 = document.createElement('h2');
+            titleElementwithh2.textContent = titleElement;
+
 
             // Create a video element and set its attributes
             const videoElement = document.createElement('video');
