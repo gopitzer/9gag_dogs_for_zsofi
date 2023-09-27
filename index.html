@@ -30,6 +30,9 @@
             border: 1px solid #ccc;
             padding: 20px;
         }
+        .videobox{
+            padding-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -67,6 +70,7 @@
             videoElement.setAttribute('controls', 'controls');
             videoElement.setAttribute('width', '100%');
             videoElement.setAttribute('src', videoUrl);
+            videoElement.setAttribute('class','videobox')
 
             // Append the title and video elements to the item div
             itemDiv.appendChild(titleElement);
