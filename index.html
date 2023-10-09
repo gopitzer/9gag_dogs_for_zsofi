@@ -67,8 +67,9 @@
 
             // Create a video element and set its attributes
             const videoElement = document.createElement('video');
-             videoElement.setAttribute('controls', 'controls');
+            videoElement.setAttribute('controls', 'controls');
             videoElement.setAttribute('width', '100%');
+            videoElement.setAttribute('preload', 'yes');
             videoElement.setAttribute('playsinline', '');
             videoElement.setAttribute('muted', '');
             videoElement.setAttribute('autoplay', '');
