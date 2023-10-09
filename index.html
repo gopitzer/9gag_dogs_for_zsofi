@@ -67,13 +67,20 @@
 
             // Create a video element and set its attributes
             const videoElement = document.createElement('video');
-            videoElement.setAttribute('controls', 'controls');
+             videoElement.setAttribute('controls', 'controls');
             videoElement.setAttribute('width', '100%');
-            videoElement.setAttribute('src', videoUrl);
-            videoElement.setAttribute('playsInline','');
-            videoElement.setAttribute('autoPlay','');
-            videoElement.setAttribute('muted','');
+            videoElement.setAttribute('playsinline', '');
+            videoElement.setAttribute('muted', '');
+            videoElement.setAttribute('autoplay', '');
             videoElement.setAttribute('class','videobox');
+            
+            // Create a source element for the video
+            const sourceElement = document.createElement('source');
+            sourceElement.src = videoUrl;
+            sourceElement.type = 'video/mp4';
+
+            // Append the source element to the video element
+            videoElement.appendChild(sourceElement);
 
             // Append the title and video elements to the item div
             itemDiv.appendChild(titleElement);
