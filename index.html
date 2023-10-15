@@ -97,7 +97,7 @@
             .then(response => response.text())
             .then(data => {
                 // Split the data into lines
-                const lines = data.reverse().split('\n');
+                const lines = data.split('\n').reverse();
                 lines.forEach(line => {
                     // Split each line into link and title
                     const [link, title] = line.split(' - ');
